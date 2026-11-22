@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc;
+  --foreground: #18181b;
+  --input-background: #ffffff;
+  --input-text: #18181b;
+  --input-border: #d4d4d8;
+  --input-placeholder: #71717a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --input-background: #09090b;
+  --input-text: #fafafa;
+  --input-border: #27272a;
+  --input-placeholder: #71717a;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.dark {
+  color-scheme: dark;
+}
+
+:root {
+  color-scheme: light;
+}
+
+* {
+  border-color: color-mix(in srgb, var(--foreground) 12%, transparent);
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  transition: border-color 150ms ease, background-color 150ms ease, color 150ms ease, opacity 150ms ease;
+}
+
+input,
+textarea,
+select {
+  color-scheme: inherit;
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+  background-color: var(--input-background);
+  border-color: var(--input-border);
+  color: var(--input-text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--input-placeholder);
+  opacity: 1;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  background-color: color-mix(in srgb, var(--input-background) 92%, var(--foreground));
+  color: color-mix(in srgb, var(--input-text) 45%, var(--input-background));
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+label,
+legend {
+  color: var(--foreground);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #18181b;
+  box-shadow: 0 0 0 1000px #ffffff inset;
+  caret-color: #18181b;
+}
+
+.dark input:-webkit-autofill,
+.dark input:-webkit-autofill:hover,
+.dark input:-webkit-autofill:focus,
+.dark textarea:-webkit-autofill,
+.dark textarea:-webkit-autofill:hover,
+.dark textarea:-webkit-autofill:focus {
+  -webkit-text-fill-color: #fafafa;
+  box-shadow: 0 0 0 1000px #09090b inset;
+  caret-color: #fafafa;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #4f46e5;
+}
+
+.dark input[type="checkbox"],
+.dark input[type="radio"] {
+  border-color: #52525b;
+  background-color: #18181b;
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
